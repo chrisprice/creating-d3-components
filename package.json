@@ -1,0 +1,18 @@
+{
+  "name": "creating-d3-components",
+  "version": "1.0.0",
+  "description": "Examples from https://slides.com/chrisprice/creating-d3-components-1",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/chrisprice/creating-d3-components.git"
+  },
+  "author": "Chris Price",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chrisprice/creating-d3-components/issues"
+  },
+  "homepage": "https://github.com/chrisprice/creating-d3-components#readme",
+  "dependencies": {
+    "d3fc": "^0.4.0"
+  }
+}
