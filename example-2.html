@@ -23,59 +23,16 @@
 
         global.barSeries = function() {
 
-          var xScale = d3.scale.identity(),
-            yScale = d3.scale.identity(),
-            barHeight = 1;
-
           var barSeries = function(selection) {
 
             selection.each(function(data) {
 
               var container = d3.select(this);
 
-              var updateSelection = container.selectAll('rect')
-                .data(data);
 
-              updateSelection.enter()
-                .append('rect');
-
-              var fillColor = d3.scale.category10();
-
-              updateSelection.attr({
-                'x': 0,
-                'y': function(d, i) { return yScale(i); },
-                'width': function(d, i) { return xScale(d); },
-                'height': barHeight,
-                'fill': function(d, i) { return fillColor(i); }
-              });
-
-              updateSelection.exit()
-                .remove();
 
             });
 
-          };
-
-          barSeries.xScale = function(value) {
-            if (!arguments.length) {
-              return xScale;
-            }
-            xScale = value;
-            return barSeries;
-          };
-          barSeries.yScale = function(value) {
-            if (!arguments.length) {
-              return yScale;
-            }
-            yScale = value;
-            return barSeries;
-          };
-          barSeries.barHeight = function(value) {
-            if (!arguments.length) {
-              return barHeight;
-            }
-            barHeight = value;
-            return barSeries;
           };
 
           return barSeries;
@@ -105,15 +62,26 @@
             .range([0, HEIGHT])
             .domain([0, data.length]);
 
+          var updateSelection = container.selectAll('rect')
+            .data(data);
+
+          updateSelection.enter()
+            .append('rect');
+
           var barHeight = HEIGHT / data.length;
 
-          var series = barSeries()
-            .xScale(xScale)
-            .yScale(yScale)
-            .barHeight(barHeight);
+          var fillColor = d3.scale.category10();
 
-          container.datum(data)
-            .call(series);
+          updateSelection.attr({
+            'x': 0,
+            'y': function(d, i) { return yScale(i); },
+            'width': function(d, i) { return xScale(d); },
+            'height': barHeight,
+            'fill': function(d, i) { return fillColor(i); }
+          });
+
+          updateSelection.exit()
+            .remove();
 
           requestAnimationFrame(render);
         }
@@ -125,3 +93,51 @@
 
   </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+          barSeries.xScale = function(value) {
+            if (!arguments.length) {
+              return xScale;
+            }
+            xScale = value;
+            return barSeries;
+          };
+          barSeries.yScale = function(value) {
+            if (!arguments.length) {
+              return yScale;
+            }
+            yScale = value;
+            return barSeries;
+          };
+          barSeries.barHeight = function(value) {
+            if (!arguments.length) {
+              return barHeight;
+            }
+            barHeight = value;
+            return barSeries;
+          };
+
+-->
