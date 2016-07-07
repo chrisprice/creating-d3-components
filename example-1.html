@@ -19,7 +19,8 @@
     <script src="jspm_packages/system.js"></script>
     <script src="config.js"></script>
     <script>
-      System.import('example-1.js');
+      System.import('example-1.js')
+        .then(example => window._data = example.data);
     </script>
 
   </body>

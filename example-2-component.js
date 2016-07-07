@@ -11,9 +11,9 @@ export default () => {
 
   const instance = (selection) => { // <- create instance
 
-    selection.each(function (data) { // <- iterate over multi-node selections
+    selection.each((data, i, nodes) => { // <- iterate over multi-node selections
 
-      const updateSelection = select(this) // <- node passed as this, forces function expression
+      const updateSelection = select(nodes[i]) // <- fat-arrow, need alternative to this
         .selectAll('rect')
         .data(data)
 
@@ -57,5 +57,5 @@ export default () => {
     return instance
   }
 
-  return instance 
+  return instance
 }

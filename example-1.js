@@ -36,7 +36,7 @@ const render = () => {
     .attr('y', (d, i) => yScale(i))
     .attr('fill', (d, i) => fillColor(i))
 
-  // requestAnimationFrame(render) // <- leave commented out until above is fixed
+  requestAnimationFrame(render)
 }
 
 requestAnimationFrame(render)
